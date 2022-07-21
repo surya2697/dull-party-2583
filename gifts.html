@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: rgb(239, 239, 239);
+    }
+    #box1{
+        display: grid;
+        height:40px;
+        width:30%;
+        grid-template-columns: repeat(4,auto);
+        grid-template-rows: 60px;
+        margin: auto;
+        margin-top: 20px;
+    }
+    #box1>div{
+        margin: auto;
+    }
+   #box1>div>P{
+        font-size:small;
+   }
+    #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        width:58%;
+        height:auto;
+        gap:15px;
+        margin: auto;
+        margin-top: 80px;
+    }
+    #container>div{
+        height:auto;
+        position: relative;
+
+    }
+    img{
+        width:100%;
+        border-radius: 20px;
+    }
+    p{
+        text-align: center;
+        font-size: medium;
+    }
+    h3{
+        color:red;
+        text-align: center;
+    }
+    button{
+        width:100%;
+        font-size: 20px;
+        background-color:rgb(6, 144, 6);
+        color:white;
+        border: none;
+        position: absolute;
+        left:0px;
+        bottom: 80px;
+        opacity: 0;
+        transition: 0.5s;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+       }
+       #container>div:hover button{
+        bottom:90px;
+        opacity: 1;
+       }
+</style>
+<body>
+    <div id="box1">
+        <div><P>ALL FRUITS</P></div>
+        <div><P>FRESH CUTS</P></div>
+        <div><P>FRUITS COMBOS</P></div>
+        <div><P><u>GIFTS BY KIMAYE</u></P></div>
+    </div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let giftsData=[
+        {
+            img:"https://cdn.shopify.com/s/files/1/0449/5225/6667/products/2I8A7793.progressive.jpg?v=1631346990",
+            name:"Fruit Box by Kimaye (Strength)",
+            price:"₹1800",
+        },
+        {
+            img:"https://cdn.shopify.com/s/files/1/0449/5225/6667/products/2I8A7807_720x.jpg?v=1631347621",
+            name:"Fruit Box by Kimaye (Adore)",
+            price:"₹2100",
+        },
+        {
+            img:"https://cdn.shopify.com/s/files/1/0449/5225/6667/products/2I8A7821.progressive.jpg?v=1631350656",
+            name:"Fruit Box by Kimaye (Cherish)",
+            price:"₹1600",
+        }
+    ]
+    let container=document.querySelector("#container");
+          function Display(data){
+             data.forEach(function(ele){
+                let div=document.createElement("div")
+                let img=document.createElement("img")
+                img.src=ele.img
+                let cart=document.createElement("button")
+                cart.addEventListener("click",event)
+                cart.innerText="Add to Cart"
+                let name=document.createElement("p")
+                name.innerText=ele.name
+                let price=document.createElement("h3")
+                price.innerText=ele.price
+                div.append(img,cart,name,price)
+                container.append(div)
+    })
+   
+}
+           Display(giftsData)
+</script>
