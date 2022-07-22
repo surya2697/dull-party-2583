@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box2{
+    display: grid;
+    width:30%;
+    grid-template-columns: 450px;
+    grid-template-rows: repeat(7,auto);
+    border:0px solid black;
+    gap:20px;
+    padding-top: 10px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: beige;
+    margin-top: 130px;
+}
+#box2>form{
+    display: grid;
+    grid-template-columns: 350px;
+    grid-template-rows: repeat(3,auto);
+    margin: auto; 
+    margin-bottom: -50px;
+
+   
+}
+#email,#pass{
+    height:25px
+}
+#login{
+    font-size: 20px;
+    color:blue;
+    background-color: beige ;
+    margin-top: 30px;
+    border:none
+
+}
+</style>
+</style>
+<body>
+    <div id="links">
+        <div><a href="login.html"></a></div>
+        <div><a href="sign.html"></a></div>
+        
+      </div >
+        <div id="box2">
+        <form action="" id="form">
+        
+          <h4>Email</h4>
+          <input placeholder="email" id="email" type="text" />
+          <h4>Password</h4>
+          <input type="text" id="pass" placeholder="password" />
+          <input id="login"type="submit" value="Log In" />
+          
+</body>
+</html>
+<script>
+    let form=document.querySelector("form");
+    
+    let Arr=JSON.parse(localStorage.getItem("dataList"))||[]
+    form.addEventListener("submit",function(e){ 
+        e.preventDefault();
+        if(Arr.length===0){
+            alert("No user found")
+            return
+        }
+        let obj={
+            email:document.querySelector("#email").value,
+            password:document.querySelector("#pass").value,
+        }
+        let flag=false
+        Arr.forEach(function(ele){
+            if(ele.email===obj.email && ele.password===obj.password){
+                flag=true
+                localStorage.setItem("login",JSON.stringify(ele))
+                
+                window.location.href="day-2.html"
+            }
+            if(flag===false){
+                alert("User does not found")
+                
+
+            }
+             
+        })
+
+    })
+</script>
+
