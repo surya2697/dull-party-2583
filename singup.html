@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Write all the necessery css  */
+h1{
+    
+    text-align: center;
+    margin-bottom: 30px;
+}
+#box{
+    display: grid;
+    width:30%;
+    grid-template-columns: 450px;
+    grid-template-rows: repeat(7,auto);
+    border:0px solid black;
+    gap:20px;
+    padding-top: 10px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: beige;
+}
+#box>form{
+    display: grid;
+    grid-template-columns: 350px;
+    grid-template-rows: repeat(6,auto);
+    margin: auto;
+    margin-bottom: -60px;
+   
+}
+#email,#pass,#mob{
+    height:25px
+}
+#sign{
+    margin-top: 30px;
+}
+body{
+    background-color: pink;
+}
+p{
+    text-align: center;
+    margin: 40px;
+}
+#login{
+    font-size: 20px;
+    color:blue;
+    background-color: beige ;
+    margin-top: -20px;
+    border:none
+}
+#sign{
+    font-size: 20px;
+    color:blue;
+    background-color: beige ;
+    margin-top: 30px;
+    border:none
+}
+</style>
+<body>
+    
+    
+        <h1>SHOPPING</h1>
+        <div id="box">
+        <form action="" id="form">
+            <h1>Sign Up</h1>
+            <h4>Email</h4>
+          <input placeholder="email" id="email" type="text" />
+          <h4>Password</h4>
+          <input type="text" id="pass" placeholder="password" />
+          <h4>Mobile Number</h4>
+          <input placeholder="mobile number" id="mob" type="number" />
+          <input id="sign"type="submit" value="Sign Up" />
+          <p>Already have an account?</p>
+          <input id="login" type="submit" value="Log In"/>
+        </div>
+    </form>
+    <div id="links">
+        <h4><a href="login.html"></a></h4>
+        <h4><a href="signup.html"></a></h4>
+        
+      </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",signUp)
+    document.querySelector("#login").addEventListener("click",loggedIn)
+    function loggedIn(){
+            window.location.href="login.html"
+        }
+    let Arr=JSON.parse(localStorage.getItem("dataList"))||[]
+    function signUp(){
+      event.preventDefault()
+      let obj={
+      email:document.querySelector("#email").value,
+      password:document.querySelector("#pass").value,
+      mobile:document.querySelector("#mob").value
+    } 
+    if(obj.email=="" || obj.password=="" || obj.mobile==""){
+        alert("All flieds are mandatory")
+        return
+    }
+    
+        
+    
+    
+    //console.log(obj)  
+    Arr.push(obj)
+    localStorage.setItem("dataList",JSON.stringify(Arr))
+    console.log(Arr)
+    alert("Successfully SingUp")
+    window.location.href="login.html"
+
+}
+
+</script>
