@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script src="https://kit.fontawesome.com/a05409f674.js" crossorigin="anonymous"></script>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
 </head>
 <style>
@@ -43,12 +45,15 @@
     grid-template-columns: repeat(3,1fr);
     gap:10px;
     grid-template-rows: 70px;
+    line-height: 75px;
+    margin-left: 200px;
   }
   #box2{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap:10px;
     grid-template-rows: 70px;
+    line-height: 75px;
   }
   #box1>div{
     justify-content: center;
@@ -59,7 +64,7 @@
   #box2>div{
     justify-content: center;
     align-items: center;
-    margin:auto;
+    margin-top:-17px;
   }
   #bigbox{
     height:650px;
@@ -67,9 +72,9 @@
     position: relative;
   }
   #img2{
-    height:65%;
-    width:50%;
-    margin-left: 28px;
+    height:28%;
+    width:45%;
+    margin-left: 30px;
   }
   #box3{
     display: grid;
@@ -103,30 +108,53 @@
   button:nth-child(3){
     right:15px;
   }
- 
+ #box1>li{
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 
+ }
+ a{
+  color:black;
+  text-decoration: none;
+ }
+ #box2>li{
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+ }
+ #ser{
+  margin-left: 20px;
+ }
+#sing{
+   margin-left: -50px;
+}
+#cart{
+  margin-left: -120px;
+}
 </style>
 <body>
   <links>
-    <a href="day2.html"></a>
-    <a href="day3.html"></a>
+    <a href="day-2.html"></a>
+    <a href="day-3.html"></a>
+    <h4><a href="login.html"></a></h4>
+        <h4><a href="sign.html"></a></h4>
   </links>
     <div id="container1">
        <p>Delivering in Mumbai and Delhi | Same day delivery!</p>
     </div>
     <div id="navbar">
         <div id="box1">
-          <div>SHOP</div>
-          <div>LEARN</div>
-          <div>GROW</div>
+          <li><a href="">SHOP</a></li>
+          <li><a href="">GROW</a></li>
+          <li><a href="">LEARN</a></li>
         </div>
        <div><img id="img1" src="https://cdn.shopify.com/s/files/1/0449/5225/6667/files/website-logo_400x.png?v=1596288204"/></div>
        <div id="box2">
         <div id="box3"> <img id="img2" src="https://cdn.icon-icons.com/icons2/2642/PNG/512/google_map_location_logo_icon_159350.png"/><p>Mumbai</p></div>
-    
-        <div>Search</div>
-        <div>SignIn</div>
-        <div>Cart</div>
+        <li><a href=""><i id="ser"class="fa-solid fa-magnifying-glass"></i></a></li>
+        <li><a href="singup.html"><i id="sing"class="fa-solid fa-user-plus"></i></a></li>
+        <li><a href=""><i  id="cart"class="fa-solid fa-bag-shopping"></i></a></li>
     </div>
        </div>
         <div id="bigbox">
@@ -166,6 +194,7 @@
     }
     image.src=imageLink[imageState]
   })
+  
 </script>
 
 
