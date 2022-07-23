@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      h1{
+        text-align: center;
+        font-family:Bitterbrush;
+      }
+      #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        width:58%;
+        height:auto;
+        gap:15px;
+        margin: auto;
+        margin-top: 80px;
+    }
+    #container>div{
+        height:auto;
+        position: relative;
+
+    }
+    img{
+        width:100%;
+        border-radius: 20px;
+    }
+    p{
+        text-align: center;
+        font-size: medium;
+    }
+    h3{
+        color:red;
+        text-align: center;
+    }
+    button{
+        width:100%;
+        font-size: 20px;
+        background-color:rgb(6, 144, 6);
+        color:white;
+        border: none;
+        position: absolute;
+        left:0px;
+        bottom: 100px;
+        opacity: 0;
+        transition: 0.5s;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+       }
+       #container>div:hover button{
+        bottom:110px;
+        opacity: 1;
+       }
+       #pay{
+        color:black;
+       }
+</style>
+<body>
+    <h1>Total Cart:-<span id="total-price">0</span></h1>
+    <div id="container">
+        <div id="container2"></div>
+        
+    </div>
+</body>
+</html>
+<script>
+    let container=document.querySelector("#container");
+    let cartLs=JSON.parse(localStorage.getItem("cart-page"))||[]
+    let totalPrice=document.getElementById("total-price");
+    function Display(allfruitsData){
+        container.innerHTML=null
+        let total=0
+        allfruitsData.forEach(function(ele,index){
+            total=total+(Number(ele.price))
+            let div=document.createElement("div")
+            let img1=document.createElement("img")
+            img1.src=ele.img1
+            let dlt=document.createElement("button")
+            dlt.addEventListener("click",function(){
+                DeleteCart(index)
+          })
+            dlt.addEventListener("click",event)
+            dlt.innerText="Delete"
+            let name=document.createElement("p")
+            name.innerText=ele.name
+            let price=document.createElement("h3")
+            price.innerText=ele.price
+            div.append(img1,dlt,name,price)
+            container.append(div)
+            
+    })
+    totalPrice.textContent=total;
+}
+Display(cartLs)
+
+function DeleteCart(index){
+     let deletedCart=cartLs.filter(function(el,i){
+        return i!=index
+     })
+     Display(deletedCart)
+     localStorage.setItem("cart-page",JSON.stringify(deletedCart))
+}
+</script>
+
